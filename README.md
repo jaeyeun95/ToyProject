@@ -3,6 +3,6 @@
 
 |   분야        | 사용기술         | 비고 |
 |--------------|-----------------|-----|
-|  Frontend    | Vue.js , BootStrap |         
-|  Backend     | SpringBoot , MyBatis |
+|  Frontend    | React, Redux, Tailwind |         
+|  Backend     | SpringBoot , Spring Data JPA |
 |  Database  | MySQL    |
