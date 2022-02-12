@@ -23,9 +23,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public void configure(WebSecurity web) throws Exception {
 //        web.ignoring().antMatchers("/static/css/**, /static/js/**, *.ico");
         // swagger
-         web.ignoring().antMatchers( "/v2/api-docs", "/configuration/ui",
-                 "/swagger-resources", "/configuration/security", "/swagger-ui.html",
-                 "/webjars/**","/swagger/**");
+        web.ignoring().antMatchers("/v2/api-docs", "/configuration/ui",
+                "/swagger-resources", "/configuration/security", "/swagger-ui.html",
+                "/webjars/**", "/swagger/**", "/h2-console/**");
 
     }
 
@@ -35,6 +35,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.cors() // WebMvcConfig에서 이미 설정했으므로 기본 cors 설정.
                 .and()
                 .csrf()// csrf는 현재 사용하지 않으므로 disable
+                .ignoringAntMatchers("/h2-console/**")
                 .disable()
                 .httpBasic()// token을 사용하므로 basic 인증 disable
                 .disable()
@@ -44,6 +45,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests() // /와 /user/** 경로는 인증 안해도 됨.
                 .antMatchers("/", "/user/**").permitAll()
                 .antMatchers("/swagger-ui/**", "/swagger-resources/**").permitAll()   // swagger
+                .antMatchers("/h2-console/**").permitAll() //h2-console
                 .anyRequest() // /와 /auth/**이외의 모든 경로는 인증 해야됨.
                 .authenticated();
 
