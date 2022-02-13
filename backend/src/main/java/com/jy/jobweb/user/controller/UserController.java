@@ -99,7 +99,7 @@ public class UserController {
 
         // 로그인 성공시
 //        UserDTO responseUserDTO = dto.builder().id(dto.getId()).pwd(dto.getPwd()).build();
-        UserDTO responseUserDTO = dto.builder().id(dto.getId()).pwd(dto.getPwd()).token(token).build();
+        UserDTO responseUserDTO = dto.builder().email(dto.getEmail()).pwd(dto.getPwd()).token(token).build();
 
         return ResponseEntity.ok().body(responseUserDTO);
     }
